@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.org.trip.mapper.PlanMapper">
+	<select id="getPlanList" resultType="plan">
+		select * from plan_board
+	</select>
+	<select id="getPlan" resultType="plan">
+		select * from plan_board where plan_num = #{planNum}
+	</select>
+	<select id="getPlanByUser" resultType="plan">
+		select * from plan_board where user_num = #{userNum}
+	</select>
+	<select id="getPlanByTema" resultType="plan">
+		select * from plan_board where plan_tema = #{planTema}
+	</select>
+	<insert id="insertPlan">
+		insert into plan_board
+		values(seq_plan_num.nextval,sysdate,#{planCity},#{planSch},#{planPlace},#{planTrans},#{planTitle},#{planTema},#{userNum})
+	</insert>
+	<update id="updatePlan">
+		update plan_board
+		<trim prefix="set" suffixOverrides=",">
+			plan_date = sysdate,
+			<if test="planCity!=null">plan_city=#{planCity},</if>
+			<if test="planSch!=null">plan_sch=#{planSch},</if>
+			<if test="planPlace!=null">plan_place=#{planPlace},</if>
+			<if test="planTrans!=null">plan_trans=#{planTrans},</if>
+			<if test="planTitle!=null">plan_title=#{planTitle},</if>
+			<if test="planTema!=null">plan_tema=#{planTema},</if>
+		</trim>
+		where plan_num = #{planNum}
+	</update>
+	<delete id="deletePlan">
+		delete from plan_board where plan_num = #{planNum}
+	</delete>
+</mapper>

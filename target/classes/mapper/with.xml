@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.org.trip.mapper.WithMapper">
+	<select id="getWithList" resultType="with">
+		select * from with_board
+	</select>
+	<select id="getWith" resultType="with">
+		select * from with_board
+		where with_num = #{withNum}
+	</select>
+	<insert id="insertWith">
+		insert into with_board(with_num,with_title,with_content,with_date,user_num)
+		values(seq_with_num.nextval,#{withTitle},#{withContent},sysdate,#{userNum})
+	</insert>
+	<update id="updateWith">
+		update with_board
+		<trim prefix="set" suffixOverrides=",">
+			<if test="withTitle!=null">with_title=#{withTitle},</if>
+			<if test="withContent!=null">with_content=#{withContent},</if>
+			with_date=sysdate
+		</trim>
+		where with_num = #{withNum}
+	</update>
+	<update id="countUp">
+		update with_board
+		set with_cnt = with_cnt + 1
+		where with_num = #{withNum}
+	</update>
+	<delete id="deleteWith">
+		delete from with_board
+		where with_num = #{withNum} and user_num = #{userNum}
+	</delete>
+</mapper>

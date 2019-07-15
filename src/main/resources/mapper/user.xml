@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.org.trip.mapper.UserMapper">
+	<select id="getUserList" resultType="user">
+		select * from user_info
+	</select>
+	<select id="getUser" resultType="user">
+		select * from user_info where user_num = #{userNum}
+	</select>
+	<select id="getUserByName" resultType="user">
+		select user_num from user_info where user_name = #{userName}
+	</select>
+	<insert id="insertUser">
+		insert into user_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+		user_num,user_id,user_pwd,user_tel,
+		<if test="userEmail!=null">
+			user_email,
+		</if>
+		<if test="userGender!=null">
+			user_gender,
+		</if>
+		user_birth,
+		<if test="userPic!=null">
+			user_pic,
+		</if>
+		user_nick,
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			seq_user_num.nextval,#{userNum},#{userPwd},#{userTel},
+			<if test="userEmail!=null">
+				#{userEmail},
+			</if>
+			<if test="userGender!=null">
+				#{userGender},
+			</if>
+			#{userBirth},
+			<if test="userPic!=null">
+				#{userPic}
+			</if>
+			#{userNick}
+		</trim>	
+	</insert>
+	<update id="updateUser">
+		update user_info
+		<trim prefix="set" suffixOverrides=",">
+			<if test="userPwd!=null">user_pwd=#{userPwd},</if>
+			<if test="userTel!=null">user_tel=#{userTel},</if>
+			<if test="userEmail!=null">user_email=#{userEmail},</if>
+			<if test="userPwd!=null">user_pwd=#{userPwd},</if>
+			<if test="userPic!=null">user_pic=#{userPic},</if>
+			<if test="userNick!=null">user_nick=#{userNick},</if>
+		</trim>
+		where user_num=#{userNum}
+	</update>
+	<delete id="deleteUser">
+		delete from user_info where user_num=#{userNum}
+	</delete>
+</mapper>

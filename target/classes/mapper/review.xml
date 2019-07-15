@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.org.trip.mapper.ReviewMapper">
+	<select id="getReviewList" resultType="review">
+		select * from review_board
+	</select>
+	<select id="getReview" resultType="review">
+		select * from review_board where rvNum = #{rvNum}
+	</select>
+	<select id="getReviewByUser" resultType="review">
+		select * from review_board where user_num = #{userNum}
+	</select>
+	<insert id="insertReview">
+		insert into review_board
+		<trim prefix="(" suffixOverrides="," suffix=")">
+			rv_num,rv_like,rv_date,
+			<if test="rvPic!=null">rv_pic,</if>
+			rv_content,
+			<if test="rvCost!=null">rv_cost,</if>
+			rv_title,user_num
+		</trim>
+		values
+		<trim prefix="(" suffixOverrides="," suffix=")">
+			seq_rv_num.nextval,#{rvLike},sysdate,
+			<if test="rvPic!=null">#{rvPic},</if>
+			#{rvContent},
+			<if test="rvCost!=null">#{rvCost},</if>
+			#{rvTitle},#{userNum}
+		</trim>
+	</insert>
+	<update id="updateReview">
+		update review_board
+		<trim prefix="set" suffixOverrides=",">
+			rv_date=sysdate,
+			<if test="rvPic!=null">rv_pic=#{rvPic},</if>
+			<if test="rvContent!=null">rv_content=#{rvContent},</if>
+			<if test="rvSp!=null">rv_sp=#{rvSp},</if>
+			<if test="rvCost!=null">rv_cost=#{rvCost},</if>
+			<if test="rvTitle!=null">rv_title=#{rvTitle},</if>
+		</trim>
+		where rv_num=#{rvNum}
+	</update>
+	<update id="countUp">
+		update review_board
+		set rv_cnt = rv_cnt +1
+		where rv_num=#{rvNum}
+	</update>
+	<update id="likeUp">
+		update review_board
+		set rv_like = rv_like +1
+		where rv_num=#{rvNum}
+	</update>
+	<update id="avgSp">
+		update review board
+		set rv_sp = avg(rv_sp+#{rvSP})
+		where rv_num=#{rvNum}
+	</update>
+	<delete id="deleteReview">
+		delete from review_board
+		where rv_num=#{rvNum} and user_num=#{userNum}
+	</delete>
+</mapper>

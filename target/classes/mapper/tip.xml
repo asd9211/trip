@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.org.trip.mapper.TipMapper">
+	<select id="getTipList" resultType="tip">
+		select * from tip_board
+	</select>
+	<select id="getTip" resultType="tip">
+		select * from tip_board
+		where tip_num=#{tipNum}
+	</select>
+	<insert id="insertTip">
+		insert into tip_board
+		values(seq_tip_num.nextval,#{tipTitle},#{tipContent},#{tipWriter},sysdate,#{userNum})
+	</insert>
+	<update id="updateTip">
+		update tip_board
+		<trim prefix="set" suffixOverrides=",">
+			<if test="tipTitle!=null">tip_title=#{tipTitle},</if>
+			<if test="tipContent!=null">tip_content=#{tipContent},</if>
+			<if test="tipWriter!=null">tip_title=#{tipTitle},</if>
+			<if test="tipTitle!=null">tip_title=#{tipTitle},</if>
+			tip_date=sysdate
+		</trim>
+		where tip_num = #{tipNum}
+	</update>
+	<delete id="deleteTip">
+		delete from tip_board
+		where tip_num=#{tipNum} and user_num = #{userNum}
+	</delete>
+</mapper>
