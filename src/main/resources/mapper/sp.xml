@@ -2,6 +2,13 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper>
-
+<mapper namespace="com.org.trip.mapper.SpMapper">
+	<insert id="insertSp">
+		insert into sp_info
+		values(#{rvNum},#{userId},#{siSp})
+	</insert>
+	<delete id="deleteSp">
+		delete from sp_info
+		where rv_num = #{rvNum} and user_id = #{userId}
+	</delete>
 </mapper>

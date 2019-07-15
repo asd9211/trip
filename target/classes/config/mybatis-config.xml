@@ -7,7 +7,6 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	<typeAliases>
-		<typeAlias type="com.org.trip.vo.TemaVO" alias="tema"/>
 		<typeAlias type="com.org.trip.vo.AdminVO" alias="admin"/>
 		<typeAlias type="com.org.trip.vo.HotelVO" alias="hotel"/>
 		<typeAlias type="com.org.trip.vo.PlanVO" alias="plan"/>
@@ -16,5 +15,6 @@
 		<typeAlias type="com.org.trip.vo.TipVO" alias="tip"/>
 		<typeAlias type="com.org.trip.vo.UserVO" alias="user"/>
 		<typeAlias type="com.org.trip.vo.WithVO" alias="with"/>
+		<typeAlias type="com.org.trip.vo.SpVO" alias="sp"/>
 	</typeAliases>
 </configuration>
