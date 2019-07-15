@@ -7,7 +7,7 @@
 		select * from admin_info
 	</select>
 	<select id="getAdmin" resultType="admin">
-		select * from admin_info where admin_num = #{admin_num}
+		select * from admin_info where admin_num = #{adminNum}
 	</select>
 	<insert id="insertAdmin">
 		insert into admin_info

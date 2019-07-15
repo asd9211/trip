@@ -20,7 +20,4 @@ public class AdminController {
 	public List<AdminVO> getAdminList(){
 		return as.getAdminList();
 	}
-	@GetMapping("/admin")
-	public AdminVO getAdmin() {
-	}
 }

@@ -12,6 +12,9 @@
 	<select id="getUserByName" resultType="user">
 		select user_num from user_info where user_name = #{userName}
 	</select>
+	<select id="getLogin" resultType="user">
+		select * from user_info where user_id= #{userId} and user_pwd = #{userPwd}
+	</select>
 	<insert id="insertUser">
 		insert into user_info
 		<trim prefix="(" suffix=")" suffixOverrides=",">
@@ -29,16 +32,16 @@
 		user_nick,
 		</trim>
 		<trim prefix="values(" suffix=")" suffixOverrides=",">
-			seq_user_num.nextval,#{userNum},#{userPwd},#{userTel},
+			seq_user_num.nextval,#{userId},#{userPwd},#{userTel},
 			<if test="userEmail!=null">
 				#{userEmail},
 			</if>
 			<if test="userGender!=null">
 				#{userGender},
 			</if>
-			#{userBirth},
+			to_date(#{userBirth}),
 			<if test="userPic!=null">
-				#{userPic}
+				#{userPic},
 			</if>
 			#{userNick}
 		</trim>	

@@ -34,20 +34,27 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Integer insertUser(UserVO user) {
-		
-		return null;
+		user.setUserPwd(SHAEncoder.encode(user.getUserPwd()));
+		return um.insertUser(user);
 	}
 
 	@Override
 	public Integer updateUser(UserVO user) {
-		user.setUserPwd(SHAEncoder.encode(user.getUserPwd()));
-		
+		if(user.getUserPwd()!=null) {
+			user.setUserPwd(SHAEncoder.encode(user.getUserPwd()));
+		}
 		return um.insertUser(user);
 	}
 
 	@Override
 	public Integer deleteUser(UserVO user) {
 		return null;
+	}
+
+	@Override
+	public UserVO getLogin(UserVO user) {
+		user.setUserPwd(SHAEncoder.encode(user.getUserPwd()));
+		return um.getLogin(user);
 	}
 
 }
