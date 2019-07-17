@@ -35,5 +35,4 @@ public class SHAEncoder {
 		}
 		return null;
 	}
-	
 }

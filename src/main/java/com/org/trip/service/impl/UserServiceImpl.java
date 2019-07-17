@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
 		if(user.getUserPwd()!=null) {
 			user.setUserPwd(SHAEncoder.encode(user.getUserPwd()));
 		}
-		return um.insertUser(user);
+		return um.updateUser(user);
 	}
 
 	@Override

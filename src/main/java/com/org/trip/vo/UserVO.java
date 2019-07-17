@@ -17,4 +17,8 @@ public class UserVO {
 	private String userPic;
 	private MultipartFile userFile;
 	private String userNick;
+	private String googleEmail;
+	private String googleId;
+	private String naverId;
+	private String naverEmail;
 }

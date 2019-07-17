@@ -54,7 +54,7 @@
 	</update>
 	<update id="avgSp">
 		update review board
-		set rv_sp = avg(rv_sp+#{rvSP})
+		set rv_sp = (select round(avg(sp)) from sp_info where rv_num = #{rvNum})
 		where rv_num=#{rvNum}
 	</update>
 	<delete id="deleteReview">

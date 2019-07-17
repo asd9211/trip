@@ -6,6 +6,9 @@
 	<select id="getReplyList" resultType="reply">
 		select * from reply_board
 	</select>
+	<select id="getReply" resultType="reply">
+		select * from reply_board where re_num = #{reNum}
+	</select>
 	<select id="getReplyByUser" resultType="reply">
 		select * from reply_board where user_num = #{userNum}
 	</select>

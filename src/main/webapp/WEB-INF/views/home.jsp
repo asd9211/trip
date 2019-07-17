@@ -5,10 +5,9 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+<div>
+<a href="${naver_url }"><img width="300" alt="naver" src="/resources/loginImg/naver.png"></a>
+<a href="${google_url }"><img width="300" alt="naver" src="/resources/loginImg/google.png"></a>
+</div>
 </body>
 </html>
