@@ -10,6 +10,10 @@
 		select * from with_board
 		where with_num = #{withNum}
 	</select>
+	<select id="getWithByUser" resultType="with">
+		select * from with_board
+		where user_num = #{userNum}
+	</select>
 	<insert id="insertWith">
 		insert into with_board(with_num,with_title,with_content,with_date,user_num)
 		values(seq_with_num.nextval,#{withTitle},#{withContent},sysdate,#{userNum})

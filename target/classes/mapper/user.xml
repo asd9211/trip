@@ -15,6 +15,11 @@
 	<select id="getLogin" resultType="user">
 		select * from user_info where user_id= #{userId} and user_pwd = #{userPwd}
 	</select>
+	<select id="getUserBySns" resultType="user">
+		select * from user_info where 
+		<if test="naverId!=null"> naver_id=#{naverId} </if>
+		<if test="googleId!=null"> google_id=#{googleId} </if>
+	</select>
 	<insert id="insertUser">
 		insert into user_info
 		<trim prefix="(" suffix=")" suffixOverrides=",">

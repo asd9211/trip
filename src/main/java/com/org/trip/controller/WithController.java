@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.org.trip.service.WithService;
@@ -30,4 +32,11 @@ public class WithController {
 	public Integer deleteWith(WithVO with) {
 		return ws.deleteWith(with);
 	}
+	
+	@GetMapping("/with/{userNum}")
+	public List<WithVO> getWithListByuser(@PathVariable Integer userNum){
+		WithVO with = new WithVO();
+		with.setUserNum(userNum);
+		return ws.getWithByUser(with); 
+   }
 }

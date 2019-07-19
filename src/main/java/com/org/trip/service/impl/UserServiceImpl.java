@@ -57,4 +57,9 @@ public class UserServiceImpl implements UserService {
 		return um.getLogin(user);
 	}
 
+	@Override
+	public UserVO getUserBySns(UserVO user) {
+		return um.getUserBySns(user);
+	}
+
 }

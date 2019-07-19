@@ -10,6 +10,7 @@ public interface UserService {
 	public UserVO getUser(Integer userNum);
 	public UserVO getUserByName(String userName);
 	public UserVO getLogin(UserVO user);
+	public UserVO getUserBySns(UserVO user);
 	public Integer insertUser(UserVO user);
 	public Integer updateUser(UserVO user);
 	public Integer deleteUser(UserVO user);

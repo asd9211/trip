@@ -9,7 +9,7 @@ public interface ReviewService {
 
 	public List<ReviewVO> getReviewList();
 	public ReviewVO getReview(ReviewVO rv);
-	public ReviewVO getReviewByUser(ReviewVO rv);
+	public List<ReviewVO> getReviewByUser(ReviewVO rv);
 	public Integer insertReview(ReviewVO rv);
 	public Integer updateReview(ReviewVO rv);
 	public Integer avgSp(ReviewVO rv);

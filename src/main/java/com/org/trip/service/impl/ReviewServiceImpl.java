@@ -32,7 +32,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public ReviewVO getReviewByUser(ReviewVO rv) {
+	public List<ReviewVO> getReviewByUser(ReviewVO rv) {
 		return rm.getReviewByUser(rv);
 	}
 

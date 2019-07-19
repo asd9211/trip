@@ -41,4 +41,9 @@ public class WithServiceImpl implements WithService {
 	public Integer deleteWith(WithVO with) {
 		return wm.insertWith(with);
 	}
+
+	@Override
+	public List<WithVO> getWithByUser(WithVO with) {
+		return wm.getWithByUser(with);
+	}
 }
