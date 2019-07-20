@@ -35,6 +35,18 @@
 			user_pic,
 		</if>
 		user_nick,
+		<if test="googleId!=null">
+			google_id,
+		</if>
+		<if test="googleEmail!=null">
+			google_email,
+		</if>
+		<if test="naverId!=null">
+			naver_id,
+		</if>
+		<if test="naverEmail!=null">
+			naver_email,
+		</if>	
 		</trim>
 		<trim prefix="values(" suffix=")" suffixOverrides=",">
 			seq_user_num.nextval,#{userId},#{userPwd},#{userTel},
@@ -48,7 +60,19 @@
 			<if test="userPic!=null">
 				#{userPic},
 			</if>
-			#{userNick}
+			#{userNick},
+			<if test="googleId!=null">
+				#{googleId},
+			</if>
+			<if test="googleEmail!=null">
+				#{googleEmail},
+			</if>
+			<if test="naverId!=null">
+				#{naverId},
+			</if>
+			<if test="naverEmail!=null">
+				#{naverEmail},
+			</if>
 		</trim>	
 	</insert>
 	<update id="updateUser">

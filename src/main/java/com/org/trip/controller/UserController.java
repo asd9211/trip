@@ -63,9 +63,9 @@ public class UserController {
 			sns = googleSns;
 		SNSLogin snslogin = new SNSLogin(sns);
 		UserVO snsUser = snslogin.getUserProfile(code);
-		if(us.getUserBySns(snsUser)==null) {
-			
-			//mv.setViewName("joinToFront");
+		UserVO pUser = us.getUserBySns(snsUser);
+		if(pUser!=null) {
+			snsUser.setUserNum(pUser.getUserNum());
 		}
 		ObjectMapper om = new ObjectMapper();
 		mv.addObject("snsUser",om.writeValueAsString(snsUser));

@@ -3,23 +3,62 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.org.trip.mapper.ReplyMapper">
-	<select id="getReplyList" resultType="reply">
-		select * from reply_board
-	</select>
-	<select id="getReply" resultType="reply">
-		select * from reply_board where re_num = #{reNum}
-	</select>
-	<select id="getReplyByUser" resultType="reply">
-		select * from reply_board where user_num = #{userNum}
-	</select>
-	<insert id="insertReply">
-		insert into reply_board
-		values(seq_re_num.nextval,sysdate,#{reContent},#{userNum})
-	</insert>
-	<update id="updateReply">
-		update reply_board set re_date=#{reDate}, re_content=#{reContent}
-	</update>
-	<delete id="deleteReply">
-		delete from reply_board where re_num = #{reNum}
-	</delete>
+   <select id="getReplyList" resultType="reply">
+      select * from reply_board
+   </select>
+   <select id="getReply" resultType="reply">
+      select * from reply_board where 1=1 and
+      <if test="reNum!=null">
+      re_num = #{reNum}
+      </if>
+      <if test="rvNum!=null">
+      rv_num = #{rVNum}
+      </if>
+      <if test="withNum!=null">
+      with_num = #{withNum}
+      </if>
+      <if test="tipNum!=null">
+      tip_num = #{tipNum}
+      </if>
+   </select>
+   
+   <select id="getReplyByUser" resultType="reply">
+      select * from reply_board where user_num = #{userNum}
+   </select>
+   
+   <insert id="insertReply" parameterType="reply">
+      <trim suffixOverrides=",">
+      insert into reply_board (re_num, re_date, re_content, user_num,
+      <if test="rvNum!=null">
+      rv_num,
+      </if>
+      <if test="withNum!=null">
+      with_num,
+      </if>
+      <if test="tipNum!=null">
+      tip_num
+      </if>
+      </trim>
+      )
+      
+      <trim suffixOverrides=",">
+      values(seq_re_num.nextval,sysdate,#{reContent},#{userNum},
+      <if test="rvNum!=null">
+      #{rvNum},
+      </if>
+      <if test="withNum!=null">
+      #{withNum},
+      </if>
+      <if test="tipNum!=null">
+      #{tipNum}
+      </if>
+      </trim>
+      )
+   </insert>
+   <update id="updateReply">
+      update reply_board set re_date=#{reDate}, re_content=#{reContent}
+   </update>
+   <delete id="deleteReply">
+      delete from reply_board where re_num = #{reNum}
+   </delete>
 </mapper>
