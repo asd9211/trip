@@ -9,5 +9,5 @@ public class HotelVO {
 	private String hotelPrice;
 	private String hotelPic;
 	private String hotelName;
-	private String hoteAddr;
+	private String hotelAddr;
 }

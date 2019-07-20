@@ -10,7 +10,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Component;
 
+@Component
 public class HotelCroling {
 	public List<Map<String,String>> searchHotel(String destination) {
 		List<Map<String,String>> getHotelList = new ArrayList<Map<String,String>>();
@@ -23,7 +25,9 @@ public class HotelCroling {
 //		String qcheckin="";
 //		String qcheckout="";
 		int page=1;
-		int cnt=1;
+		int priceNum=1;
+		int nameNum=1;
+		int addressNum=1;
 		try {
 			while(true) {
 				Document doc = Jsoup.connect(hotelUrl+"/search.do?q-destination="+destination+"&sort-order="+sort+"&pn="+page).get();
@@ -65,8 +69,7 @@ public class HotelCroling {
 //					}
 //					}
 				
-				for(Element e: price) {
-					int num = 1;					
+				for(Element e: price) {					
 					int begin = e.text().lastIndexOf("₩");
 					int end = e.text().lastIndexOf("다음");
 					String hotelPrice = "";
@@ -75,29 +78,27 @@ public class HotelCroling {
 					}else {
 						hotelPrice = e.text().substring(begin,end);						
 					}
-					priceMap.put("hotelPrice"+num, hotelPrice);
-					num++;
-					cnt++;
+					priceMap.put("hotelPrice"+priceNum, hotelPrice);
+					priceNum++;
 				}
-				for(Element e:hotelName) {
-					int num = 1;					
-					hotelNameMap.put("hotelName"+num, e.text());
-					num++;
+				for(Element e:hotelName) {			
+					hotelNameMap.put("hotelName"+nameNum, e.text());
+					nameNum++;
 				}
-				for(Element e:hotelAddress) {
-					int num = 1;					
-					hotelAddressMap.put("hotelAddress"+num, e.text());
-					num++;
+				for(Element e:hotelAddress) {				
+					hotelAddressMap.put("hotelAddress"+addressNum, e.text());
+					addressNum++;
 				}
 				page++;
 			}
-			for(int i=1;i<=cnt;i++) {
+			for(int i=1;i<=priceMap.size();i++) {
 				Map<String,String> pMap = new HashMap<String,String>();
-				getHotelList.add(pMap.put("hotelPrice",priceMap.get("hotelPrice"+i))+"&"+hotelNameMap.get("hotelName"+i)+"&"+hotelAddressMap.get("hotelAddress"+i));
+				pMap.put("hotelPrice",priceMap.get("hotelPrice"+i));
+				pMap.put("hotelName",hotelNameMap.get("hotelName"+i));
+				pMap.put("hotelAddress",hotelAddressMap.get("hotelAddress"+i));
+				getHotelList.add(pMap);
 			}
-			getHotelList.add(priceMap);
-			getHotelList.add(hotelNameMap);
-			getHotelList.add(hotelAddressMap);
+			System.out.println(getHotelList);
 			return getHotelList;
 		} catch (IOException e) {
 			e.printStackTrace();

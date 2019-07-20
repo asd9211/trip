@@ -25,13 +25,12 @@ public class HotelServiceImpl implements HotelService {
 		List<Map<String,String>> getHotelList = new ArrayList<Map<String,String>>();
 		HotelVO hotel = new HotelVO();
 		getHotelList=hc.searchHotel(destination);
-		for(int i=0;i<getHotelList.size();i++) {
-			for(int j=0;j<getHotelList.get(i).size();j++) {
-				switch(i) {
-				case 0:
-				
-				}
-				getHotelList.get(i).get(j);
+		for(int i=0; i<getHotelList.size();i++) {
+			hotel.setHotelPrice(getHotelList.get(i).get("hotelPrice"));
+			hotel.setHotelName(getHotelList.get(i).get("hotelName"));
+			hotel.setHotelAddr(getHotelList.get(i).get("hotelAddress"));
+			if(hm.getHotelByHotelName(hotel)==null) {
+				hm.insertHotel(hotel);
 			}
 		}
 		return hm.getHotelList();

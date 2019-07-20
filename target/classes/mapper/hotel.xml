@@ -9,9 +9,12 @@
 	<select id="getHotel" resultType="hotel">
 		select * from hotel_info where hotel_num = #{hotelNum}
 	</select>
+	<select id="getHotelByHotelName" resultType="hotel">
+		select * from hotel_info where hotel_name = #{hotelName}
+	</select>
 	<insert id="insertHotel">
-		insert into hotel_info(hotel_num,hotel_price,hotel_pic,hotel_name,hotel_addr)
-		values(seq_hotel_num.nextval,#{hotelPrice},#{hotelPic},#{hotelName},#{hotelAddr})
+		insert into hotel_info(hotel_num,hotel_price,hotel_name,hotel_addr)
+		values(seq_hotel_num.nextval,#{hotelPrice},#{hotelName},#{hotelAddr})
 	</insert>
 	<update id="updateHotel">
 		update hotel_info
