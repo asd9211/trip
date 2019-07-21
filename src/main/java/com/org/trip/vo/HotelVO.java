@@ -10,4 +10,5 @@ public class HotelVO {
 	private String hotelPic;
 	private String hotelName;
 	private String hotelAddr;
+	private String hotelDestination;
 }

@@ -9,12 +9,18 @@
 	<select id="getHotel" resultType="hotel">
 		select * from hotel_info where hotel_num = #{hotelNum}
 	</select>
-	<select id="getHotelByHotelName" resultType="hotel">
-		select * from hotel_info where hotel_name = #{hotelName}
+	<select id="getHotelByDestination" resultType="hotel">
+		select DISTINCT hotel_destination from hotel_info where hotel_destination = #{hotelDestination}
+	</select>
+	<select id="getHotelByLowPrice" resultType="hotel">
+		select * from hotel_info where hotel_destination = #{hotelDestination} order by to_number(REGEXP_REPLACE(hotel_price,'[^0-9]'))
+	</select>
+	<select id="getHotelByHighPrice" resultType="hotel">
+		select * from hotel_info where hotel_destination = #{hotelDestination} order by to_number(REGEXP_REPLACE(hotel_price,'[^0-9]')) desc
 	</select>
 	<insert id="insertHotel">
-		insert into hotel_info(hotel_num,hotel_price,hotel_name,hotel_addr)
-		values(seq_hotel_num.nextval,#{hotelPrice},#{hotelName},#{hotelAddr})
+		insert into hotel_info(hotel_num,hotel_price,hotel_name,hotel_addr,hotel_destination)
+		values(seq_hotel_num.nextval,#{hotelPrice},#{hotelName},#{hotelAddr},#{hotelDestination})
 	</insert>
 	<update id="updateHotel">
 		update hotel_info
