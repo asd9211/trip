@@ -22,18 +22,18 @@ public class HotelServiceImpl implements HotelService {
 	private HotelCroling hc;
 	@Override
 	public List<HotelVO> getHotelList(String destination) {
-		List<Map<String,String>> getHotelList = new ArrayList<Map<String,String>>();
 		HotelVO hotel = new HotelVO();
-		getHotelList=hc.searchHotel(destination);
-		for(int i=0;i<getHotelList.size();i++) {
-			for(int j=0;j<getHotelList.get(i).size();j++) {
-				switch(i) {
-				case 0:
-				
-				}
-				getHotelList.get(i).get(j);
+		hotel.setHotelDestination(destination);
+		if(hm.getHotelByDestination(hotel)==null) {
+			List<Map<String,String>> getHotelList = new ArrayList<Map<String,String>>();
+			getHotelList=hc.searchHotel(destination);		
+			for(int i=0; i<getHotelList.size();i++) {			
+				hotel.setHotelPrice(getHotelList.get(i).get("hotelPrice"));
+				hotel.setHotelName(getHotelList.get(i).get("hotelName"));
+				hotel.setHotelAddr(getHotelList.get(i).get("hotelAddress"));
+				hm.insertHotel(hotel);
 			}
-		}
+		}		
 		return hm.getHotelList();
 	}
 
@@ -59,6 +59,16 @@ public class HotelServiceImpl implements HotelService {
 	public Integer deleteHotel(HotelVO hotel) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<HotelVO> getHotelByLowPrice(String destination) {
+		return hm.getHotelByLowPrice(destination);
+	}
+
+	@Override
+	public List<HotelVO> getHotelByHighPrice(String destination) {
+		return hm.getHotelByHighPrice(destination);
 	}
 
 }
