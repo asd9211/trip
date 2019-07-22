@@ -11,4 +11,5 @@ public interface TipMapper {
 	public Integer insertTip(TipVO tip);
 	public Integer updateTip(TipVO tip);
 	public Integer deleteTip(TipVO tip);
+	public List<TipVO> getTipByUserNum(TipVO tip);
 }

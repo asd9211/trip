@@ -7,9 +7,12 @@
 		select * from tip_board
 	</select>
 	<select id="getTip" resultType="tip">
-		select * from tip_board
-		where tip_num=#{tipNum}
+		select * from tip_board where tip_num=#{tipNum}
 	</select>
+	<select id="getTipByUserNum" resultType="tip">
+		select * from tip_board where user_num=#{userNum}
+	</select>
+	
 	<insert id="insertTip">
 		insert into tip_board
 		values(seq_tip_num.nextval,#{tipTitle},#{tipContent},#{tipWriter},sysdate,#{userNum})
@@ -19,14 +22,12 @@
 		<trim prefix="set" suffixOverrides=",">
 			<if test="tipTitle!=null">tip_title=#{tipTitle},</if>
 			<if test="tipContent!=null">tip_content=#{tipContent},</if>
-			<if test="tipWriter!=null">tip_title=#{tipTitle},</if>
-			<if test="tipTitle!=null">tip_title=#{tipTitle},</if>
 			tip_date=sysdate
 		</trim>
 		where tip_num = #{tipNum}
 	</update>
 	<delete id="deleteTip">
-		delete from tip_board
+		delete from tip_board 
 		where tip_num=#{tipNum} and user_num = #{userNum}
 	</delete>
 </mapper>

@@ -25,10 +25,12 @@ public class HotelController {
 	}
 	@GetMapping("/hotelLowPrice/{destination}")
 	public List<HotelVO> getHotelRowList(@PathVariable String destination){
+		System.out.println("low"+destination);
 		return hs.getHotelByLowPrice(destination);
 	}
 	@GetMapping("/hotelHighPrice/{destination}")
 	public List<HotelVO> getHotelHighList(@PathVariable String destination){
+		System.out.println("high"+destination);
 		return hs.getHotelByHighPrice(destination);
 	}
 }

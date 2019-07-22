@@ -41,4 +41,9 @@ public class TipServiceImpl implements TipService {
 		return tm.deleteTip(tip);
 	}
 
+	@Override
+	public List<TipVO> getTipByUserNum(TipVO tip) {
+		return tm.getTipByUserNum(tip);
+	}
+
 }

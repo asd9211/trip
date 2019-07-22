@@ -9,8 +9,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 
 @Configuration
 public class WebConfig extends WebMvcConfigurationSupport {
+	
+
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/img/**").addResourceLocations("/resources/reviewImg/")
+		registry.addResourceHandler("/img/**").addResourceLocations("/resources/hotelImg/")
 		.setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-	}	
+	}
 }

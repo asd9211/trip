@@ -86,6 +86,7 @@ public class UserController {
 	}
 	@PostMapping("/login")
 	public UserVO getLogin(@RequestBody UserVO user,HttpSession session) {
+		System.out.println("d");
 		UserVO rUser = us.getLogin(user);
 		if(rUser!=null) {
 			session.setAttribute("userVO", rUser);
