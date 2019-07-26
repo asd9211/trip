@@ -14,4 +14,5 @@ public class PlanVO {
 	private String planTitle;
 	private Integer planTema;
 	private Integer userNum;
+	private String planContent;
 }

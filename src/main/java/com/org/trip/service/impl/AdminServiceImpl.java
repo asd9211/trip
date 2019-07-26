@@ -19,5 +19,9 @@ public class AdminServiceImpl implements AdminService {
 	public List<AdminVO> getAdminList() {
 		return am.getAdminList();
 	}
+	@Override
+	public AdminVO getAdminLogin(AdminVO admin) {
+		return am.getAdminLogin(admin);
+	}
 	
 }

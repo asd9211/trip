@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.org.trip.mapper.ReplyMapper">
    <select id="getReplyList" resultType="reply">
-      select * from reply_board
+      select * from reply_board order by re_date desc
    </select>
    <select id="getReply" resultType="reply">
       select * from reply_board where 1=1 and
@@ -12,7 +12,7 @@
       re_num = #{reNum}
       </if>
       <if test="rvNum!=null">
-      rv_num = #{rVNum}
+      rv_num = #{rvNum}
       </if>
       <if test="withNum!=null">
       with_num = #{withNum}
@@ -20,6 +20,7 @@
       <if test="tipNum!=null">
       tip_num = #{tipNum}
       </if>
+      order by re_date desc
    </select>
    
    <select id="getReplyByUser" resultType="reply">

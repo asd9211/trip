@@ -21,4 +21,5 @@ public class UserVO {
 	private String googleId;
 	private String naverId;
 	private String naverEmail;
+	private String userLevel;
 }

@@ -8,7 +8,7 @@ public interface UserMapper {
 
 	public List<UserVO>getUserList();
 	public UserVO getUser(Integer userNum);
-	public UserVO getUserByName(String userName);
+	public UserVO getUserByNick(UserVO user);
 	public UserVO getLogin(UserVO user);
 	public UserVO getUserBySns(UserVO user);
 	public Integer insertUser(UserVO user);

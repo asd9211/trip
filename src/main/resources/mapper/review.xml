@@ -4,13 +4,13 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.org.trip.mapper.ReviewMapper">
 	<select id="getReviewList" resultType="review">
-		select * from review_board
+		select * from review_board order by rv_date desc
 	</select>
 	<select id="getReview" resultType="review">
-		select * from review_board where rvNum = #{rvNum}
+		select * from review_board where rv_Num = #{rvNum} order by rv_date desc
 	</select>
 	<select id="getReviewByUser" resultType="review">
-		select * from review_board where user_num = #{userNum}
+		select * from review_board where user_num = #{userNum} order by rv_date desc
 	</select>
 	<insert id="insertReview">
 		insert into review_board
@@ -54,7 +54,7 @@
 	</update>
 	<update id="avgSp">
 		update review board
-		set rv_sp = (select round(avg(sp)) from sp_info where rv_num = #{rvNum})
+		set rv_sp = (select round(avg(si_sp)) from sp_info where rv_num = #{rvNum})
 		where rv_num=#{rvNum}
 	</update>
 	<delete id="deleteReview">

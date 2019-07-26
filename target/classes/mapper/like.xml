@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.org.trip.mapper.LikeMapper">
+	<select id="getLike" resultType="like">
+		select * from like_info where user_num = #{userNum} and rv_num=#{rvNum}
+	</select>
+	<insert id="insertLike">
+		insert into like_info
+		values(#{rvNum},#{userNum})
+	</insert>
+	<delete id="deleteLike">
+		delete from like_info where user_num = #{userNum} and rv_num=#{rvNum}
+	</delete>
+</mapper>

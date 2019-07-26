@@ -9,8 +9,8 @@
 	<select id="getUser" resultType="user">
 		select * from user_info where user_num = #{userNum}
 	</select>
-	<select id="getUserByName" resultType="user">
-		select user_num from user_info where user_name = #{userName}
+	<select id="getUserByNick" resultType="user">
+		select * from user_info where user_nick = #{userNick}
 	</select>
 	<select id="getLogin" resultType="user">
 		select * from user_info where user_id= #{userId} and user_pwd = #{userPwd}
@@ -46,7 +46,7 @@
 		</if>
 		<if test="naverEmail!=null">
 			naver_email,
-		</if>	
+		</if>
 		</trim>
 		<trim prefix="values(" suffix=")" suffixOverrides=",">
 			seq_user_num.nextval,#{userId},#{userPwd},#{userTel},

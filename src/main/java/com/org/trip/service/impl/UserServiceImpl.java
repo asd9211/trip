@@ -19,17 +19,17 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public List<UserVO> getUserList() {
-		return null;
+		return um.getUserList();
 	}
 
 	@Override
 	public UserVO getUser(Integer userNum) {
-		return null;
+		return um.getUser(userNum);
 	}
 
 	@Override
-	public UserVO getUserByName(String userName) {
-		return null;
+	public UserVO getUserByNick(UserVO user) {
+		return um.getUserByNick(user);
 	}
 
 	@Override
@@ -48,12 +48,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Integer deleteUser(UserVO user) {
-		return null;
+		return um.deleteUser(user);
 	}
 
 	@Override
 	public UserVO getLogin(UserVO user) {
-		user.setUserPwd(SHAEncoder.encode(user.getUserPwd()));
+		if(user.getUserId().equals("admin")) {
+		} else {
+			user.setUserPwd(SHAEncoder.encode(user.getUserPwd()));
+		}
 		return um.getLogin(user);
 	}
 

@@ -4,20 +4,20 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.org.trip.mapper.PlanMapper">
 	<select id="getPlanList" resultType="plan">
-		select * from plan_board
+		select * from plan_board order by plan_date desc
 	</select>
 	<select id="getPlan" resultType="plan">
-		select * from plan_board where plan_num = #{planNum}
+		select * from plan_board where plan_num = #{planNum} order by plan_date desc
 	</select>
 	<select id="getPlanByUser" resultType="plan">
-		select * from plan_board where user_num = #{userNum}
+		select * from plan_board where user_num = #{userNum} order by plan_date desc
 	</select>
 	<select id="getPlanByTema" resultType="plan">
-		select * from plan_board where plan_tema = #{planTema}
+		select * from plan_board where plan_tema = #{planTema} order by plan_date desc
 	</select>
 	<insert id="insertPlan">
 		insert into plan_board
-		values(seq_plan_num.nextval,sysdate,#{planCity},#{planSch},#{planPlace},#{planTrans},#{planTitle},#{planTema},#{userNum})
+		values(seq_plan_num.nextval,sysdate,#{planCity},#{planSch},#{planPlace},#{planTrans},#{planTitle},#{planTema},#{userNum},#{planContent})
 	</insert>
 	<update id="updatePlan">
 		update plan_board
@@ -29,6 +29,7 @@
 			<if test="planTrans!=null">plan_trans=#{planTrans},</if>
 			<if test="planTitle!=null">plan_title=#{planTitle},</if>
 			<if test="planTema!=null">plan_tema=#{planTema},</if>
+			<if test="planContent!=null">plan_content=#{planContent},</if>
 		</trim>
 		where plan_num = #{planNum}
 	</update>

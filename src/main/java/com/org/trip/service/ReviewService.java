@@ -14,4 +14,5 @@ public interface ReviewService {
 	public Integer updateReview(ReviewVO rv);
 	public Integer avgSp(ReviewVO rv);
 	public Integer deleteReview(ReviewVO rv);
+	public Integer likeUp(ReviewVO rv);
 }

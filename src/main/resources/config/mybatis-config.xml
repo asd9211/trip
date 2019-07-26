@@ -16,5 +16,6 @@
 		<typeAlias type="com.org.trip.vo.UserVO" alias="user"/>
 		<typeAlias type="com.org.trip.vo.WithVO" alias="with"/>
 		<typeAlias type="com.org.trip.vo.SpVO" alias="sp"/>
+		<typeAlias type="com.org.trip.vo.LikeVO" alias="like"/>
 	</typeAliases>
 </configuration>

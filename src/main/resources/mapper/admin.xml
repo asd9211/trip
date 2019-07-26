@@ -9,6 +9,9 @@
 	<select id="getAdmin" resultType="admin">
 		select * from admin_info where admin_num = #{adminNum}
 	</select>
+	<select id="getAdminLogin" resultType="admin">
+		select * from admin_info where admin_id = #{adminId} and admin_pwd = #{adminPwd}
+	</select>
 	<insert id="insertAdmin">
 		insert into admin_info
 		values(seq_admin_num.nextval,#{admin_name},#{admin_id},#{admin_pwd})

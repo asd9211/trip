@@ -60,5 +60,10 @@ public class ReviewServiceImpl implements ReviewService {
 	public Integer deleteReview(ReviewVO rv) {
 		return rm.deleteReview(rv);
 	}
+
+	@Override
+	public Integer likeUp(ReviewVO rv) {
+		return rm.likeUp(rv);
+	}
 	
 }

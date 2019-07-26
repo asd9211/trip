@@ -7,4 +7,5 @@ import com.org.trip.vo.AdminVO;
 public interface AdminMapper {
 
 	public List<AdminVO> getAdminList();
+	public AdminVO getAdminLogin(AdminVO admin);
 }

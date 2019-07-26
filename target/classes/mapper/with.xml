@@ -4,15 +4,15 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.org.trip.mapper.WithMapper">
 	<select id="getWithList" resultType="with">
-		select * from with_board
+		select * from with_board order by with_date desc
 	</select>
 	<select id="getWith" resultType="with">
 		select * from with_board
-		where with_num = #{withNum}
+		where with_num = #{withNum} order by with_date desc
 	</select>
 	<select id="getWithByUser" resultType="with">
 		select * from with_board
-		where user_num = #{userNum}
+		where user_num = #{userNum} order by with_date desc
 	</select>
 	<insert id="insertWith">
 		insert into with_board(with_num,with_title,with_content,with_date,user_num)

@@ -5,10 +5,10 @@
 <mapper namespace="com.org.trip.mapper.SpMapper">
 	<insert id="insertSp">
 		insert into sp_info
-		values(#{rvNum},#{userId},#{siSp})
+		values(#{rvNum},#{userNum},#{siSp})
 	</insert>
 	<delete id="deleteSp">
 		delete from sp_info
-		where rv_num = #{rvNum} and user_id = #{userId}
+		where rv_num = #{rvNum} and user_num = #{userNum}
 	</delete>
 </mapper>
