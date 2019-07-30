@@ -9,6 +9,7 @@ public class WithVO {
 	private String withTitle;
 	private String withContent;
 	private String withDate;
+	private String withWriter;
 	private Integer withCnt;
 	private Integer userNum;
 }

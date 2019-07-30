@@ -14,4 +14,5 @@ public interface UserMapper {
 	public Integer insertUser(UserVO user);
 	public Integer updateUser(UserVO user);
 	public Integer deleteUser(UserVO user);
+	public String getUserNick(Integer userNum);
 }

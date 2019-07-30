@@ -53,7 +53,7 @@
 		where rv_num=#{rvNum}
 	</update>
 	<update id="avgSp">
-		update review board
+		update review_board
 		set rv_sp = (select round(avg(si_sp)) from sp_info where rv_num = #{rvNum})
 		where rv_num=#{rvNum}
 	</update>

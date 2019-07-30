@@ -27,7 +27,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.org.trip.auth.SNSLogin;
 import com.org.trip.auth.SnsValue;
-import com.org.trip.service.AdminService;
 import com.org.trip.service.UserService;
 import com.org.trip.vo.UserVO;
 
@@ -44,8 +43,6 @@ public class UserController {
 	private GoogleConnectionFactory googleConnectionFactory;
 	@Resource
 	private OAuth2Parameters googleOAuth2Parameters;
-	@Resource
-	private AdminService as;
 	
 	@GetMapping("/users")
 	public List<UserVO> getUserList(){

@@ -20,6 +20,9 @@
 		<if test="naverId!=null"> naver_id=#{naverId} </if>
 		<if test="googleId!=null"> google_id=#{googleId} </if>
 	</select>
+	<select id="getUserNick" resultType="String">
+		select user_nick from user_info where user_num=#{userNum}
+	</select>
 	<insert id="insertUser">
 		insert into user_info
 		<trim prefix="(" suffix=")" suffixOverrides=",">

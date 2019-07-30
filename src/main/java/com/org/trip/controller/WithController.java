@@ -34,8 +34,6 @@ public class WithController {
    
    @PostMapping("/with")
    public Integer insertWith(@RequestBody WithVO with) {
-
-      System.out.println("with:123"+with);
       return ws.insertWith(with);
    }
    

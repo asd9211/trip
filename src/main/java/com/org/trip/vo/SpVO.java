@@ -6,6 +6,6 @@ import lombok.Data;
 public class SpVO {
 
 	private Integer rvNum;
-	private String userId;
+	private String userNum;
 	private Integer siSp;
 }
