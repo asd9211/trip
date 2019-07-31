@@ -22,8 +22,8 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public NoticeVO getNotice(NoticeVO notice) {
-		return nm.getNotice(notice);
+	public NoticeVO getNotice(Integer nbNum) {
+		return nm.getNotice(nbNum);
 	}
 
 	@Override

@@ -43,8 +43,7 @@ public class ReplyServiceImpl implements ReplyService {
    }
 
    @Override
-   public List<ReplyVO> getReply(ReplyVO re) {
-      
+   public List<ReplyVO> getReply(ReplyVO re) {      
       return rm.getReply(re);
    }
 

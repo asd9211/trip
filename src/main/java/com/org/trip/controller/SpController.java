@@ -20,7 +20,6 @@ public class SpController {
 	
 	@PostMapping("/sp")
 	public Integer insertSp(@RequestBody SpVO sp) {
-		System.out.println(sp);
 		return sps.insertSp(sp);
 	}
 	@DeleteMapping("/sp")

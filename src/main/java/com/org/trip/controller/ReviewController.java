@@ -54,7 +54,6 @@ public class ReviewController {
 	}
 	@PostMapping("/review")
 	public Integer insertReview(@RequestBody ReviewVO rv) {
-		System.out.println("review:::::"+rv);
 		return rs.insertReview(rv);
 	}
 	@PutMapping("/review")
@@ -72,7 +71,6 @@ public class ReviewController {
 	}
 	@PostMapping("/upload/one")
 	public Map<String, Object> upload(MultipartFile upload) throws IllegalStateException, IOException{
-		System.out.println("ㅇㅇ");
 		String reName = ip.fileUpload(upload, BASE_URL + File.separator);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("url", "http://localhost:88/image?name="+reName); //not null
@@ -85,7 +83,6 @@ public class ReviewController {
 	@GetMapping("/image")
 	public ResponseEntity<byte[]> image(@RequestParam(value="name") String name) throws IOException{
 		File file = new File(BASE_URL + File.separator + name);
-		System.out.println("file:"+file);
 		FileInputStream in = new FileInputStream(file);
 		byte[] buffer = new byte[in.available()];
 		in.read(buffer);

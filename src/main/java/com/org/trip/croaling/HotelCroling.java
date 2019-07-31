@@ -95,7 +95,6 @@ public class HotelCroling {
 				pMap.put("hotelPic", hotelPicMap.get("hotelPic"+i));
 				getHotelList.add(pMap);
 			}
-			System.out.println(getHotelList);
 			return getHotelList;
 		} catch (IOException e) {
 			e.printStackTrace();

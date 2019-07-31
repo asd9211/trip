@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +27,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.org.trip.auth.SNSLogin;
 import com.org.trip.auth.SnsValue;
 import com.org.trip.service.UserService;
+import com.org.trip.util.InsertPic;
 import com.org.trip.vo.UserVO;
 
 @RestController
@@ -86,7 +86,6 @@ public class UserController {
 	@PostMapping("/login")
 	public UserVO getLogin(@RequestBody UserVO user) {
 		UserVO rUser = us.getLogin(user);
-		System.out.println(rUser);
 		return rUser;
 	}
 	@PostMapping("/user")
@@ -96,12 +95,10 @@ public class UserController {
 	}
 	@PostMapping("/userDelete")
 	   public Integer userDelete(@RequestBody UserVO user) {
-		System.out.println(user);
 	      return us.deleteUser(user);
 	   }	   
 	@PostMapping("/users")
 	   public Integer userUpdate(@ModelAttribute UserVO user) {
-		System.out.println(user);
 	    return us.updateUser(user);
 	   }
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.org.trip.service.PlanService;
@@ -41,22 +42,26 @@ public class PlanController {
 	      return ps.getPlanByUser(plan);
 	   }
 	   
-	   @GetMapping("/planTema/{planTema}")
-	   public List<PlanVO> getPlanByTema(@PathVariable Integer planTema){
+//	   @GetMapping("/planTema/{planTema}")
+//	   public List<PlanVO> getPlanByTema(@PathVariable Integer planTema){
+//	      PlanVO plan = new PlanVO();
+//	      plan.setPlanTema(planTema);
+//	      return ps.getPlanByTema(plan);
+//	   }
+	   @GetMapping("/planTema")
+	   public List<PlanVO> getPlanByTema2(@RequestParam Integer planTema){
 	      PlanVO plan = new PlanVO();
 	      plan.setPlanTema(planTema);
 	      return ps.getPlanByTema(plan);
 	   }
 	   
 	   @PostMapping("/plan")
-	   public Integer insertPlan(@RequestBody PlanVO plan) {
-		  
+	   public Integer insertPlan(@RequestBody PlanVO plan) {		  
 	      return ps.insertPlan(plan);
 	   }
 	   
 	   @PutMapping("/plan")
 	   public Integer updatePlan(@RequestBody PlanVO plan) {
-		   System.out.println("planvo:"+plan);
 	      return ps.updatePlan(plan);
 	   }
 	   

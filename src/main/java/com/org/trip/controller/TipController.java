@@ -39,7 +39,6 @@ public class TipController {
    }
    @PostMapping("/tip")
    public Integer insertTip(@RequestBody TipVO tip) {
-	  System.out.println(tip);
       return ts.insertTip(tip);
    }
    @PutMapping("/tip")
@@ -48,7 +47,6 @@ public class TipController {
    }
    @DeleteMapping("/tip")
    public Integer deleteTip(TipVO tip) {
-      System.out.println("tip:"+tip);
       return ts.deleteTip(tip);
    }
 }

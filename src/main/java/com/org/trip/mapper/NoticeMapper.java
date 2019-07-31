@@ -7,6 +7,6 @@ import com.org.trip.vo.NoticeVO;
 public interface NoticeMapper {
 	
 	public List<NoticeVO> getNoticeList();
-	public NoticeVO getNotice(NoticeVO notice);
+	public NoticeVO getNotice(Integer nbNum);
 	public Integer insertNotice(NoticeVO notice);
 }

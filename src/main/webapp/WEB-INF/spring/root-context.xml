@@ -23,5 +23,5 @@
 	</bean>
 	<bean id="ss" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="ssFactory"/>
-	</bean>
+	</bean>	
 </beans>

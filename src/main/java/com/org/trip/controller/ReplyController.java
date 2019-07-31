@@ -28,7 +28,6 @@ public class ReplyController {
 	}
 	@PostMapping("/replybyboard")
 	public List<ReplyVO> getReplyByUser(@RequestBody ReplyVO re) {
-		System.out.println(re);
 		return rs.getReply(re);
 	}
 	@PostMapping("/reply")

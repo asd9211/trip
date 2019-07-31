@@ -22,11 +22,9 @@ public class HotelServiceImpl implements HotelService {
 	private HotelCroling hc;
 	@Override
 	public List<HotelVO> getHotelList(String destination) {
-		System.out.println("service"+destination);
 		HotelVO hotel = new HotelVO();
 		hotel.setHotelDestination(destination);
 		if(hm.getHotelByDestination(hotel).size()==0) {
-			System.out.println("exe"+destination);
 			List<Map<String,String>> getHotelList = new ArrayList<Map<String,String>>();
 			getHotelList=hc.searchHotel(destination);		
 			for(int i=0; i<getHotelList.size();i++) {			

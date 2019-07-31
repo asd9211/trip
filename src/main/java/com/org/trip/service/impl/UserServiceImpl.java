@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.org.trip.mapper.UserMapper;
 import com.org.trip.service.UserService;
+import com.org.trip.util.InsertPic;
 import com.org.trip.util.SHAEncoder;
 import com.org.trip.vo.UserVO;
 
@@ -16,6 +17,8 @@ public class UserServiceImpl implements UserService {
 
 	@Resource
 	private UserMapper um;
+	@Resource
+	private InsertPic ip;
 	
 	@Override
 	public List<UserVO> getUserList() {
@@ -42,7 +45,8 @@ public class UserServiceImpl implements UserService {
 	public Integer updateUser(UserVO user) {
 		if(user.getUserPwd()!=null) {
 			user.setUserPwd(SHAEncoder.encode(user.getUserPwd()));
-		}
+		}		
+		user.setUserPic("/imgu/"+ip.fileUpload(user.getUserFile(), "C:\\Users\\Administrator\\eclipse-workspace\\trip\\src\\main\\webapp\\resources\\userImg\\"));
 		return um.updateUser(user);
 	}
 

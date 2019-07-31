@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,13 +25,12 @@ public class NoticeController {
 	public List<NoticeVO> getNoticeList(){
 		return ns.getNoticeList();
 	}
-	@GetMapping("/notice")
-	public NoticeVO getNotice(@RequestBody NoticeVO notice) {
-		return ns.getNotice(notice);
+	@GetMapping("/notice/{nbNum}")
+	public NoticeVO getNotice(@PathVariable Integer nbNum) {
+		return ns.getNotice(nbNum);
 	}
 	@PostMapping("/notice")
 	public Integer insertNotice(@RequestBody NoticeVO notice) {
-		System.out.println(notice);
 		return ns.insertNotice(notice);
 	}
 }
