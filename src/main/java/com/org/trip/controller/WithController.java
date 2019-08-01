@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,8 +42,9 @@ public class WithController {
    public Integer updateWith(@RequestBody WithVO with) { 
       return ws.updateWith(with);
    }
-   
+   @DeleteMapping("/with")
    public Integer deleteWith(WithVO with) {
+	  System.out.println(with);
       return ws.deleteWith(with);
    }
    
